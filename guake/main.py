@@ -170,7 +170,7 @@ def main():
         dest="select_tab_label",
         action="store",
         default="",
-        help=_("Select a tab (SELECT_TAB_LABEL is the case insensitive label of the tab)"),
+        help=_("Select a tab (SELECT_TAB_LABEL is the case-sensitive label of the tab)"),
     )
 
     parser.add_option(
