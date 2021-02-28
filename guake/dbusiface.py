@@ -81,6 +81,10 @@ class DbusManager(dbus.service.Object):
     def select_tab(self, tab_index=0):
         return self.guake.get_notebook().set_current_page(int(tab_index))
 
+    @dbus.service.method(DBUS_NAME, in_signature="i")
+    def select_tab_label(self, tab_label):
+        return self.guake.select_tab_by_tab_label(tab_label)
+
     @dbus.service.method(DBUS_NAME, out_signature="i")
     def get_selected_tab(self):
         return self.guake.get_notebook().get_current_page()

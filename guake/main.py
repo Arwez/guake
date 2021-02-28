@@ -165,6 +165,15 @@ def main():
     )
 
     parser.add_option(
+        "-w",
+        "--select-tab-label",
+        dest="select_tab_label",
+        action="store",
+        default="",
+        help=_("Select a tab (SELECT_TAB_LABEL is the case insensitive label of the tab)"),
+    )
+
+    parser.add_option(
         "-g",
         "--selected-tab",
         dest="selected_tab",
@@ -499,6 +508,15 @@ def main():
             remote_object.select_tab(selected)
         else:
             sys.stderr.write("invalid index: %d\n" % selected)
+        only_show_hide = options.show
+
+    if options.select_tab_label:
+        tab_label = str(options.select_tab_label)
+        if not tab_label:
+            sys.stderr.write("no label was provided!\n")
+        else:
+            if not remote_object.select_tab_label(tab_label):
+                sys.stderr.write("Could not find tab with label \"" + tab_label + "\"\n")
         only_show_hide = options.show
 
     if options.selected_tab:

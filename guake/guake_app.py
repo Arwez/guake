@@ -1149,6 +1149,16 @@ class Guake(SimpleGladeApp):
 
     # -- tab related functions --
 
+    def select_tab_by_tab_label(self, tab_label):
+        notebook = self.get_notebook()
+        index = notebook.find_first_tab_index_by_label_text(tab_label)
+        if index != -1:
+            self.get_notebook().set_current_page(index)
+            return True
+        else:
+            return False
+
+
     def close_tab(self, *args):
         """Closes the current tab.
         """

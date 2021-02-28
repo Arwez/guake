@@ -408,6 +408,12 @@ class TerminalNotebook(Gtk.Notebook):
                 return index
         return -1
 
+    def find_first_tab_index_by_label_text(self, label_text):
+        for index, tab_eventbox in enumerate(self.iter_tabs()):
+            if label_text == tab_eventbox.get_text():
+                return index
+        return -1
+
     def find_page_index_by_terminal(self, terminal):
         for index, page in enumerate(self.iter_pages()):
             for t in page.iter_terminals():
